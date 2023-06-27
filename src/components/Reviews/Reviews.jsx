@@ -4,13 +4,12 @@ import { useParams } from 'react-router-dom';
 import { getMovieReviews } from 'services/movie-service';
 import { Review, Message } from './Review.styled';
 
-
 const Reviews = () => {
-  const [reviews, setReviews] = useState([]);
+  const [reviews, setReviews] = useState();
   const [rejected, setRejected] = useState();
   const [isLoading, setIsLoading] = useState();
   const { movieId } = useParams();
-
+  console.log(reviews);
   useEffect(() => {
     try {
       (async () => {
@@ -29,7 +28,7 @@ const Reviews = () => {
     <>
       {rejected && !isLoading && <div>{rejected}</div>}
 
-      {!isLoading && reviews.length > 1 ? (
+      {!isLoading && reviews?.length > 1 && (
         <ul>
           {reviews.map(({ author, content, id }) => (
             <Review key={id}>
@@ -38,7 +37,9 @@ const Reviews = () => {
             </Review>
           ))}
         </ul>
-      ) : (
+      )}
+
+      {!isLoading && reviews && (
         <Message>We don`t have any reviews for this movie.</Message>
       )}
     </>
