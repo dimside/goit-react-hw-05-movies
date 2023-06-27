@@ -9,7 +9,7 @@ const Reviews = () => {
   const [rejected, setRejected] = useState();
   const [isLoading, setIsLoading] = useState();
   const { movieId } = useParams();
-  console.log(reviews);
+  
   useEffect(() => {
     try {
       (async () => {
