@@ -17,8 +17,10 @@ export const App = () => {
             <Route index element={<Home />} />
             <Route path="movies" element={<Movies />}></Route>
             <Route path="movies/:movieId" element={<MovieDetails />}>
-              <Route path="cast" element={<Cast />} />
-              <Route path="reviews" element={<Reviews />} />
+              <Suspense fallback={<div>Loading...</div>}>
+                <Route path="cast" element={<Cast />} />
+                <Route path="reviews" element={<Reviews />} />
+              </Suspense>
             </Route>
           </Route>
         </Routes>
