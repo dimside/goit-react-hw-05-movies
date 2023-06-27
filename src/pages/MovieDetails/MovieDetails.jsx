@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState, useRef, Suspense } from 'react';
 import { Outlet, useLocation, useParams } from 'react-router-dom';
 import { ColorRing } from 'react-loader-spinner';
 import { MdKeyboardBackspace } from 'react-icons/md';
@@ -96,7 +96,9 @@ const MovieDetails = () => {
                 </li>
               </ul>
             </AdditionalInfo>
-            <Outlet />
+            <Suspense fallback={<div>Loading...</div>}>
+              <Outlet />
+            </Suspense>
           </>
         )}
 
