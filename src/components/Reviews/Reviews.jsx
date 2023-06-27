@@ -9,7 +9,7 @@ const Reviews = () => {
   const [rejected, setRejected] = useState();
   const [isLoading, setIsLoading] = useState();
   const { movieId } = useParams();
-  
+  console.log(reviews);
   useEffect(() => {
     try {
       (async () => {
@@ -28,7 +28,7 @@ const Reviews = () => {
     <>
       {rejected && !isLoading && <div>{rejected}</div>}
 
-      {!isLoading && reviews?.length > 1 && (
+      {!isLoading && reviews?.length > 0 && (
         <ul>
           {reviews.map(({ author, content, id }) => (
             <Review key={id}>
