@@ -9,7 +9,7 @@ const Reviews = () => {
   const [rejected, setRejected] = useState();
   const [isLoading, setIsLoading] = useState();
   const { movieId } = useParams();
-  console.log(reviews);
+  
   useEffect(() => {
     try {
       (async () => {
@@ -39,7 +39,7 @@ const Reviews = () => {
         </ul>
       )}
 
-      {!isLoading && reviews && (
+      {!isLoading && reviews?.length === 0 && (
         <Message>We don`t have any reviews for this movie.</Message>
       )}
     </>
